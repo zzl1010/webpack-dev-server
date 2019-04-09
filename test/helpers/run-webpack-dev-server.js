@@ -31,7 +31,11 @@ function runWebackDevServer(testArgs, configPath) {
   const args = [webpackDevServerPath, '--config', configPath].concat(testArgs);
 
   return new Promise((resolve, reject) => {
-    const child = execa('node', args, { cwd, env });
+    const child = execa('node', args, {
+      cwd,
+      env,
+      customFds: [0, 1, 2],
+    });
 
     child.on('error', (error) => reject(error));
 

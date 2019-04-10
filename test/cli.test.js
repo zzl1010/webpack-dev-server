@@ -62,6 +62,9 @@ describe('CLI', () => {
   it('--color', (done) => {
     runDevServer('--color')
       .then((output) => {
+        console.log('=====');
+        console.log(output.stdout);
+
         // https://github.com/webpack/webpack-dev-server/blob/master/lib/utils/colors.js
         expect(
           output.stdout.includes(
